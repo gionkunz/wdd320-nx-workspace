@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@sae-nx-workspace/api-interfaces';
+import { TodoItem } from '@sae-nx-workspace/api-interfaces';
 
 @Component({
   selector: 'sae-nx-workspace-root',
@@ -8,6 +8,6 @@ import { Message } from '@sae-nx-workspace/api-interfaces';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  todoItems$ = this.http.get<TodoItem[]>('/api/todos');
   constructor(private http: HttpClient) {}
 }
