@@ -1,2 +1,6 @@
-<sae-nx-workspace-todo [todoItems]="todoItems$ | async">
+<sae-nx-workspace-todo
+  [todoItems]="todoItems$ | async"
+  (addItem)="onAddItem($event)"
+  (deleteItem)="onDeleteItem($event)"
+  (updateItemDone)="onUpdateItemDone($event)">
 </sae-nx-workspace-todo>

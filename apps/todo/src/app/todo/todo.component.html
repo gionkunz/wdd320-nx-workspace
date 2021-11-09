@@ -29,14 +29,14 @@
           <mat-label>Input</mat-label>
           <input matInput [(ngModel)]="createItemTitle">
         </mat-form-field>
-        <button mat-flat-button color="primary">Add</button>
+        <button mat-flat-button color="primary" (click)="onAddItem()">Add</button>
       </div>
 
       <mat-card class="item" *ngFor="let todoItem of todoItems">
-        <mat-checkbox>
+        <mat-checkbox [checked]="todoItem.done" (change)="onUpdateItemDone($event, todoItem)">
           {{ todoItem.title }}
         </mat-checkbox>
-        <button class="delete-button" mat-raised-button color="warn">Delete</button>
+        <button class="delete-button" mat-raised-button color="warn" (click)="onDeleteItem(todoItem)">Delete</button>
       </mat-card>
     </div>
 

@@ -7,3 +7,8 @@ export interface TodoItem {
 export interface CreateTodoItem {
   title: string;
 }
+
+export interface UpdateTodoDone {
+  id: string;
+  done: boolean;
+}

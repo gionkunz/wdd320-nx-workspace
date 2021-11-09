@@ -12,7 +12,7 @@ export class AppController {
     '2': {
       id: '2',
       title: 'Item 2',
-      done: false
+      done: true
     },
     '3': {
       id: '3',

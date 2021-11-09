@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { TodoItem } from '@sae-nx-workspace/api-interfaces';
+import { CreateTodoItem, TodoItem, UpdateTodoDone } from '@sae-nx-workspace/api-interfaces';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'sae-nx-workspace-todo',
@@ -11,6 +12,9 @@ import { TodoItem } from '@sae-nx-workspace/api-interfaces';
 })
 export class TodoComponent {
   @Input() todoItems: TodoItem[] | null = [];
+  @Output() addItem = new EventEmitter<CreateTodoItem>();
+  @Output() deleteItem = new EventEmitter<string>();
+  @Output() updateItemDone = new EventEmitter<UpdateTodoDone>();
 
   createItemTitle = '';
 
@@ -22,4 +26,21 @@ export class TodoComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  onAddItem() {
+    this.addItem.emit({
+      title: this.createItemTitle
+    });
+    this.createItemTitle = '';
+  }
+
+  onDeleteItem(item: TodoItem) {
+    this.deleteItem.emit(item.id);
+  }
+
+  onUpdateItemDone(change: MatCheckboxChange, item: TodoItem) {
+    this.updateItemDone.emit({
+      id: item.id,
+      done: change.checked
+    });
+  }
 }
