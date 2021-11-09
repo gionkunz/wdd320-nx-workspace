@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { CreateTodoItem, TodoItem } from '@sae-nx-workspace/api-interfaces';
 
 @Controller('todos')
@@ -45,8 +45,8 @@ export class AppController {
     return this.todos[id];
   }
 
-  // POST /api/todos/1619990885576140
-  @Post(':id')
+  // PUT /api/todos/1619990885576140
+  @Put(':id')
   updateTodo(@Param('id') id: string, @Body() updateTodoItem: Partial<TodoItem>): TodoItem {
     this.todos[id] = {
       ...this.todos[id],
