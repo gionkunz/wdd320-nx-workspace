@@ -23,10 +23,22 @@
       <span>TODO App</span>
     </mat-toolbar>
 
-    <ul>
-      <li *ngFor="let todoItem of todoItems">{{ todoItem.title }}</li>
-    </ul>
+    <div class="item-container">
+      <div class="create-item">
+        <mat-form-field appearance="fill" class="create-item-field">
+          <mat-label>Input</mat-label>
+          <input matInput [(ngModel)]="createItemTitle">
+        </mat-form-field>
+        <button mat-flat-button color="primary">Add</button>
+      </div>
 
+      <mat-card class="item" *ngFor="let todoItem of todoItems">
+        <mat-checkbox>
+          {{ todoItem.title }}
+        </mat-checkbox>
+        <button class="delete-button" mat-raised-button color="warn">Delete</button>
+      </mat-card>
+    </div>
 
   </mat-sidenav-content>
 </mat-sidenav-container>

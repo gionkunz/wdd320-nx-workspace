@@ -15,3 +15,27 @@
   top: 0;
   z-index: 1;
 }
+
+.item-container {
+  max-width: 800px;
+  margin: 60px auto;
+}
+
+.item {
+  display: flex;
+  margin-bottom: 3px;
+}
+
+.create-item {
+  display: flex;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.create-item-field {
+  flex: 1 0 auto;
+}
+
+.delete-button {
+  margin-left: auto;
+}

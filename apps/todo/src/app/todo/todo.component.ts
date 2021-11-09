@@ -12,6 +12,8 @@ import { TodoItem } from '@sae-nx-workspace/api-interfaces';
 export class TodoComponent {
   @Input() todoItems: TodoItem[] | null = [];
 
+  createItemTitle = '';
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
